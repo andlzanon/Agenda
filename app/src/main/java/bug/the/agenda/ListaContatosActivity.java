@@ -4,10 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import bug.the.agenda.cadastroContatos.CadastroContatosActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ListaContatos extends AppCompatActivity {
+public class ListaContatosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,7 @@ public class ListaContatos extends AppCompatActivity {
 
     @OnClick(R.id.fab)
     public void criaContato() {
-        Intent abrirCadastroContatos = new Intent(ListaContatos.this, CadastroContatos.class);
+        Intent abrirCadastroContatos = new Intent(ListaContatosActivity.this, CadastroContatosActivity.class);
         startActivity(abrirCadastroContatos);
     }
 

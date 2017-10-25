@@ -4,12 +4,11 @@
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context="bug.the.agenda.CadastroContatos">
+tools:context="bug.the.agenda.cadastroContatos.CadastroContatosActivity">
 
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/marrom">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,20 +19,12 @@ tools:context="bug.the.agenda.CadastroContatos">
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="       Cadastrar contato"
-            android:textSize="32sp"
-            android:textColor="@color/laranja"
-            />
-
         <android.support.design.widget.TextInputLayout
             android:id="@+id/text_input_layout_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="41dp"
-            android:textColorHint="@color/white">
+            android:textColorHint="@color/colorPrimary">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/edit_text_nome"
@@ -43,7 +34,7 @@ tools:context="bug.the.agenda.CadastroContatos">
                 android:hint="@string/nome"
                 android:maxLines="1"
                 android:lines="1"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="16sp"
                 android:imeOptions="actionNext" />
 
@@ -54,7 +45,7 @@ tools:context="bug.the.agenda.CadastroContatos">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textColorHint="@color/white">
+            android:textColorHint="@color/colorPrimary">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/edit_text_email"
@@ -64,7 +55,7 @@ tools:context="bug.the.agenda.CadastroContatos">
                 android:inputType="text"
                 android:maxLines="1"
                 android:lines="1"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
         </android.support.design.widget.TextInputLayout>
@@ -74,7 +65,7 @@ tools:context="bug.the.agenda.CadastroContatos">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textColorHint="@color/white">
+            android:textColorHint="@color/colorPrimary">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/edit_text_endereco"
@@ -84,7 +75,7 @@ tools:context="bug.the.agenda.CadastroContatos">
                 android:inputType="text"
                 android:maxLines="1"
                 android:lines="1"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
         </android.support.design.widget.TextInputLayout>
@@ -94,7 +85,7 @@ tools:context="bug.the.agenda.CadastroContatos">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textColorHint="@color/white">
+            android:textColorHint="@color/colorPrimary">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/edit_text_telefone"
@@ -104,7 +95,7 @@ tools:context="bug.the.agenda.CadastroContatos">
                 android:inputType="numberDecimal"
                 android:maxLines="1"
                 android:lines="1"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
         </android.support.design.widget.TextInputLayout>

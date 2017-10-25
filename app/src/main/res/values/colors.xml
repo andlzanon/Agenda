@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/marrom</color>
-    <color name="colorPrimaryDark">@color/marromDark</color>
-    <color name="colorAccent">@color/white</color>
+    <color name="colorPrimary">@color/vermelho</color>
+    <color name="colorPrimaryDark">@color/vermelho_escuro</color>
+    <color name="colorAccent">#BA68C8</color>
 
     <color name="white">#FFFFFF</color>
     <color name="blue_chalk">#ECD7FF</color>
@@ -17,6 +17,10 @@
     <color name="marrom">#795548</color>
     <color name="marromDark">#4b2c20</color>
     <color name="laranja">#ff7043</color>
+    <color name="deep_purple">#673AB7</color>
+
+    <color name="vermelho">#9C27B0</color>
+    <color name="vermelho_escuro">#7B1FA2</color>
 
 
 </resources>

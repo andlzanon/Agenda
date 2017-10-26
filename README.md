@@ -6,6 +6,6 @@ Aplicativo agenda de contatos
 
 * [CircleImageView](https://github.com/hdodenhof/CircleImageView)
 
-##Alunos
+## Alunos
 * André Levi Zanon
 * Rodrigo Ferrari de Souza

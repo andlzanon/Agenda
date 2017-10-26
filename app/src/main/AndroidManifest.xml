@@ -8,9 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity"
-            android:theme="@style/AppThemeNoActionBar">
+        android:theme="@style/AppThemeNoActionBar">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,9 +18,15 @@
         </activity>
 
         <activity android:name=".ListaContatosActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="bug.the.agenda.main.MainActivity" />
         </activity>
 
         <activity android:name=".cadastroContatos.CadastroContatosActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="bug.the.agenda.ListaContatosActivity" />
         </activity>
     </application>
 

@@ -17,5 +17,7 @@
     <string name="agenda">Agenda</string>
     <string name="foto">Abrir Câmera</string>
     <string name="mapa">Abrir Mapa</string>
+    <string name="novo_contato">Novo Contato</string>
+    <string name="lista_contatos">Lista de Contatos</string>
 
 </resources>

@@ -20,7 +20,6 @@ android {
 }
 
 
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -35,4 +34,5 @@ dependencies {
     //outras dependências…
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
 }

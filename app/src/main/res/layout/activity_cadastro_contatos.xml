@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="bug.the.agenda.cadastroContatos.CadastroContatosActivity">
-
-<ScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <include layout="@layout/toolbar"></include>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,12 +18,14 @@ tools:context="bug.the.agenda.cadastroContatos.CadastroContatosActivity">
             android:orientation="vertical"
             android:background="@color/colorPrimary">
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/circle"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:id="@+id/imagemPerfil"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/white"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_nome"
@@ -50,7 +49,9 @@ tools:context="bug.the.agenda.cadastroContatos.CadastroContatosActivity">
                     android:layout_marginLeft="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
-                    android:imeOptions="actionNext" />
+                    android:imeOptions="actionNext"
+                    android:drawableEnd="@drawable/ic_action_person"
+                    android:drawableRight="@drawable/ic_action_person"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -82,16 +83,20 @@ tools:context="bug.the.agenda.cadastroContatos.CadastroContatosActivity">
                 android:maxLines="1"
                 android:lines="1"
                 android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:drawableEnd="@drawable/ic_action_email"
+                android:drawableRight="@drawable/ic_action_email"/>
 
         </android.support.design.widget.TextInputLayout>
 
+
+
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/text_input_layout_endereco"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textColorHint="@color/colorPrimary">
+                android:id="@+id/text_input_layout_endereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColorHint="@color/colorPrimary">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/edit_text_endereco"
@@ -99,80 +104,38 @@ tools:context="bug.the.agenda.cadastroContatos.CadastroContatosActivity">
                 android:layout_height="wrap_content"
                 android:hint="@string/endereco"
                 android:inputType="text"
-                android:maxLines="1"
                 android:lines="1"
+                android:maxLines="1"
                 android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:drawableEnd="@drawable/ic_action_map"
+                android:drawableRight="@drawable/ic_action_map"/>
 
         </android.support.design.widget.TextInputLayout>
 
-        <LinearLayout
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_telefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp"
+            android:textColorHint="@color/colorPrimary">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/text_input_layout_telefone"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_telefone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textColorHint="@color/colorPrimary">
+                android:hint="@string/telefone"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:lines="1"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:drawableEnd="@drawable/ic_action_phone"
+                android:drawableRight="@drawable/ic_action_phone"/>
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/edit_text_telefone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/telefone"
-                    android:inputType="numberDecimal"
-                    android:maxLines="1"
-                    android:lines="1"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
+        </android.support.design.widget.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
-
-
-        </LinearLayout>
-
-
-        <Button
-            android:id="@+id/button_abrirCamera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="29dp"
-            android:layout_marginRight="29dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/havelock_blue_rounded_corners"
-            android:fontFamily="sans-serif-bold"
-            android:text="@string/foto"
-            android:textColor="@color/white"/>
-
-        <Button
-            android:id="@+id/button_abrirMapa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="29dp"
-            android:layout_marginRight="29dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/havelock_blue_rounded_corners"
-            android:fontFamily="sans-serif-bold"
-            android:text="@string/mapa"
-            android:textColor="@color/white"/>
-
-
-        <Button
-            android:id="@+id/button_cadastrar"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="29dp"
-            android:layout_marginRight="29dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/havelock_blue_rounded_corners"
-            android:fontFamily="sans-serif-bold"
-            android:text="@string/cadastrar"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="17sp" />
 
     </LinearLayout>
 
@@ -180,6 +143,4 @@ tools:context="bug.the.agenda.cadastroContatos.CadastroContatosActivity">
     </LinearLayout>
 
 </ScrollView>
-
-</RelativeLayout>
 

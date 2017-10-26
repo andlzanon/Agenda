@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/roxo</color>
-    <color name="colorPrimaryDark">@color/roxo_escuro</color>
-    <color name="colorAccent">#BA68C8</color>
+    <color name="colorPrimary">@color/azultop</color>
+    <color name="colorPrimaryDark">@color/azultop_dark</color>
+    <color name="colorAccent">@color/azultop_accent</color>
 
     <color name="white">#FFFFFF</color>
     <color name="blue_chalk">#ECD7FF</color>
@@ -21,5 +21,10 @@
 
     <color name="roxo">#9C27B0</color>
     <color name="roxo_escuro">#7B1FA2</color>
+    <color name="roxo_accent">#BA68C8</color>
+
+    <color name="azultop">#20b4c6</color>
+    <color name="azultop_dark">#008495</color>
+    <color name="azultop_accent">#67e6f9</color>
 
 </resources>

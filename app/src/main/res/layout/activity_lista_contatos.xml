@@ -12,17 +12,10 @@
         android:background="@color/white"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lista de Contatos"
-            android:textSize="32sp"
-            android:textColor="@color/colorPrimary"
-            />
+        <include layout="@layout/toolbar"></include>
+
      </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton

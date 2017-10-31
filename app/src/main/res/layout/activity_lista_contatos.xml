@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="bug.the.agenda.ListaContatosActivity">
+    tools:context="bug.the.agenda.cadastroContatos.ListaContatosActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,13 @@
 
         <include layout="@layout/toolbar"></include>
 
-     </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/contatosRecyclerView">
+    </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

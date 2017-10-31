@@ -52,4 +52,17 @@ public class CadastroContatosPresenter {
         }
 
     }
+
+    public void cadastro(String nome, String endereco, String telefone, String email) {
+        if (TextUtils.isEmpty(nome))
+            cadastroContatosView.erroNome();
+        else if (TextUtils.isEmpty(endereco))
+            cadastroContatosView.erroEndereco();
+        else if (TextUtils.isEmpty(telefone))
+            cadastroContatosView.erroTel();
+        else if(TextUtils.isEmpty(email))
+            cadastroContatosView.erroEmail();
+        else
+            cadastroContatosView.cadastroComSucesso(nome, endereco, telefone, email);
+    }
 }

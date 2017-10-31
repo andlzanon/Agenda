@@ -8,7 +8,8 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:minHeight="?attr/actionBarSize"
-    android:titleTextColor="@color/white"/>
+    android:titleTextColor="@color/white"
+    android:elevation="3dp"/>
 
 
 

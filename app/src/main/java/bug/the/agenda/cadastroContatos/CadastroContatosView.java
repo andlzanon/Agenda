@@ -15,5 +15,9 @@ public interface CadastroContatosView{
     public void erroNome();
     public void erroMapa();
     public void erroTel();
+    public void erroEndereco();
+    public void erroEmail();
+
+    public void cadastroComSucesso(String nome, String endereco, String telefone, String email);
 }
 

@@ -6,7 +6,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import bug.the.agenda.ListaContatosActivity;
+import bug.the.agenda.cadastroContatos.ListaContatosActivity;
 import bug.the.agenda.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;

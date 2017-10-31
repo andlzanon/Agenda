@@ -29,6 +29,8 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
+    //compila dependecia da recycler view
+    compile 'com.android.support:recyclerview-v7:23.2.0'
     testCompile 'junit:junit:4.12'
 
     //outras dependências…

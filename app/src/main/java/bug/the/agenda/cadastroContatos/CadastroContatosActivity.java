@@ -1,40 +1,33 @@
 package bug.the.agenda.cadastroContatos;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-
-import bug.the.agenda.Contato;
 import bug.the.agenda.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnLongClick;
 import butterknife.OnTextChanged;
+
+import static bug.the.agenda.cadastroContatos.ContatosRecyclerAdapter.CONTATO;
+import static bug.the.agenda.cadastroContatos.ListaContatosActivity.contatos;
 
 public class CadastroContatosActivity extends AppCompatActivity implements CadastroContatosView {
 
     private static final int CAMERA_REQUEST = 1888;
 
-    //lista de Contatos
-    public static ArrayList<Contato> contatos = new ArrayList<>();
+    //atributos do objeto a ser adicionado no array list
+    Bitmap imagem;
+    String nome, endereco, telefone, email;
 
     //declaracao do presenter
     CadastroContatosPresenter cadastroContatosPresenter;
@@ -46,6 +39,10 @@ public class CadastroContatosActivity extends AppCompatActivity implements Cadas
     @BindView(R.id.edit_text_nome) TextInputEditText textoNome;
     @BindView(R.id.text_input_layout_nome) TextInputLayout layoutNome;
 
+    //declaracao dos campos de email
+    @BindView(R.id.edit_text_email) TextInputEditText textoEmail;
+    @BindView(R.id.text_input_layout_email) TextInputLayout layoutEmail;
+
     //declaracao dos campos de endereco
     @BindView(R.id.edit_text_endereco) TextInputEditText textoEndereco;
     @BindView(R.id.text_input_layout_endereco) TextInputLayout layoutEndereco;
@@ -54,38 +51,62 @@ public class CadastroContatosActivity extends AppCompatActivity implements Cadas
     @BindView(R.id.edit_text_telefone) TextInputEditText textoTelefone;
     @BindView(R.id.text_input_layout_telefone) TextInputLayout layoutTel;
 
+    //contato que pode ou nao ser recebido para a Activity
+    Contato contato = null;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_contatos);
-
-        //cria a toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        //adciona titulo e define o botao <- na toolbar
-        getSupportActionBar().setTitle(R.string.novo_contato);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         ButterKnife.bind( this );
         cadastroContatosPresenter = new CadastroContatosPresenter(this, this);
 
         //seta imagem de perfil
         imagePerfil.setImageDrawable(getResources().getDrawable(R.drawable.ic_photo));
+        //no comeco imagem da pessoa e a imagem defaut, ou seja, a camera
+        imagem = BitmapFactory.decodeResource(getResources(), R.drawable.ic_photo);
+
+        //verifica se um Contato foi passado para esta Activity, ou seja, se a activity foi aberta
+        //por meio de um click na Recycler View
+        Intent intent = getIntent();
+        contato = intent.getParcelableExtra(CONTATO);
+        if(contato != null){
+            imagePerfil.setImageBitmap(contato.getFotoPerfil());
+            textoNome.setText(contato.getNome());
+            textoTelefone.setText(contato.getTelefone());
+            textoEndereco.setText(contato.getEndereco());
+            textoEmail.setText(contato.getEmail());
+        }
+
+        //cria a toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //adciona titulo e define o botao <- na toolbar
+        if(contato == null)
+            getSupportActionBar().setTitle(R.string.novo_contato);
+        else
+            getSupportActionBar().setTitle(R.string.contato);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     //coloca o texto de cadastrar na toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        if(contato == null){
+            getMenuInflater().inflate(R.menu.menu, menu);
+        }
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.buttonCadastro){
-            //contatos.add(new Contato())
+        if(item.getItemId() == R.id.buttonCadastro && contato == null){
+            cadastroContatosPresenter.cadastro(textoNome.getText().toString(), textoEndereco.getText().toString(),
+                    textoTelefone.getText().toString(), textoEmail.getText().toString());
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -115,6 +136,7 @@ public class CadastroContatosActivity extends AppCompatActivity implements Cadas
         if(requestCode == CAMERA_REQUEST && resultCode == RESULT_OK){
             Bitmap squareBitmap =  (Bitmap) data.getExtras().get("data");
             imagePerfil.setImageBitmap(squareBitmap);
+            imagem = squareBitmap;
         }
     }
 
@@ -153,5 +175,25 @@ public class CadastroContatosActivity extends AppCompatActivity implements Cadas
     public void erroTel() {
         layoutTel.setErrorEnabled( true );
         layoutTel.setError(getString(R.string.invalid_username));
+    }
+
+    @Override
+    public void erroEndereco(){
+        layoutEndereco.setErrorEnabled( true );
+        layoutEndereco.setError(getString(R.string.invalid_username));
+    }
+
+    @Override
+    public void erroEmail(){
+        layoutEmail.setErrorEnabled( true );
+        layoutEmail.setError(getString(R.string.invalid_username));
+    }
+
+    @Override
+    public void cadastroComSucesso(String nome, String endereco, String telefone, String email){
+        contatos.add(new Contato(imagem, nome, endereco, telefone, email));
+        Log.d("CADASTRO: ", "COM SUCESSO " +contatos.size());
+        Intent intent = new Intent(this, ListaContatosActivity.class);
+        startActivity(intent);
     }
 }

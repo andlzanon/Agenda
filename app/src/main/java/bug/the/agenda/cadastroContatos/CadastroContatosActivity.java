@@ -19,6 +19,7 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 
 import static bug.the.agenda.cadastroContatos.ContatosRecyclerAdapter.CONTATO;
+import static bug.the.agenda.cadastroContatos.ContatosRecyclerAdapter.INDEX;
 import static bug.the.agenda.cadastroContatos.ListaContatosActivity.contatos;
 
 public class CadastroContatosActivity extends AppCompatActivity implements CadastroContatosView {
@@ -27,8 +28,7 @@ public class CadastroContatosActivity extends AppCompatActivity implements Cadas
 
     //atributos do objeto a ser adicionado no array list
     Bitmap imagem;
-    String nome, endereco, telefone, email;
-
+    int index;
     //declaracao do presenter
     CadastroContatosPresenter cadastroContatosPresenter;
 
@@ -71,13 +71,10 @@ public class CadastroContatosActivity extends AppCompatActivity implements Cadas
         //por meio de um click na Recycler View
         Intent intent = getIntent();
         contato = intent.getParcelableExtra(CONTATO);
-        if(contato != null){
-            imagePerfil.setImageBitmap(contato.getFotoPerfil());
-            textoNome.setText(contato.getNome());
-            textoTelefone.setText(contato.getTelefone());
-            textoEndereco.setText(contato.getEndereco());
-            textoEmail.setText(contato.getEmail());
-        }
+        index = intent.getIntExtra(INDEX, -1);
+
+        //verifica se o contato e null. Se nao for, seta as informacoes conforme o objeto passado como Extra
+        cadastroContatosPresenter.verificaSeContatoENull(contato);
 
         //cria a toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -96,19 +93,13 @@ public class CadastroContatosActivity extends AppCompatActivity implements Cadas
     //coloca o texto de cadastrar na toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if(contato == null){
-            getMenuInflater().inflate(R.menu.menu, menu);
-        }
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.buttonCadastro && contato == null){
-            cadastroContatosPresenter.cadastro(textoNome.getText().toString(), textoEndereco.getText().toString(),
-                    textoTelefone.getText().toString(), textoEmail.getText().toString());
-            return true;
-        }
+        cadastroContatosPresenter.editouOuCadastrou(item.getItemId(), contato);
         return super.onOptionsItemSelected(item);
     }
 
@@ -195,5 +186,34 @@ public class CadastroContatosActivity extends AppCompatActivity implements Cadas
         Log.d("CADASTRO: ", "COM SUCESSO " +contatos.size());
         Intent intent = new Intent(this, ListaContatosActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void contatoNaoNull(){
+        imagePerfil.setImageBitmap(contato.getFotoPerfil());
+        textoNome.setText(contato.getNome());
+        textoTelefone.setText(contato.getTelefone());
+        textoEndereco.setText(contato.getEndereco());
+        textoEmail.setText(contato.getEmail());
+    }
+
+    @Override
+    public void editouContato(Bitmap bitmap, String nome, String endereco, String telefone, String email){
+        contatos.remove(index);
+        contatos.add(index, new Contato(bitmap, nome, endereco, telefone, email));
+        Intent intent = new Intent(this, ListaContatosActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void tentaCadastro(){
+        cadastroContatosPresenter.cadastro(textoNome.getText().toString(), textoEndereco.getText().toString(),
+                textoTelefone.getText().toString(), textoEmail.getText().toString());
+    }
+
+    @Override
+    public void editouContatoPresenter(){
+        editouContato(imagem, textoNome.getText().toString(), textoEndereco.getText().toString(),
+                textoTelefone.getText().toString(), textoEmail.getText().toString());
     }
 }

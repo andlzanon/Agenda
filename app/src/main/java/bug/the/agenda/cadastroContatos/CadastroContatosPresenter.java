@@ -65,4 +65,24 @@ public class CadastroContatosPresenter {
         else
             cadastroContatosView.cadastroComSucesso(nome, endereco, telefone, email);
     }
+
+    public void verificaSeContatoENull(Contato contato){
+        if(contato != null)
+            cadastroContatosView.contatoNaoNull();
+    }
+
+    public boolean editouOuCadastrou(int itemId, Contato contato){
+        if(itemId == R.id.buttonCadastro && contato == null){
+            cadastroContatosView.tentaCadastro();
+            return true;
+        }
+
+        else if(itemId == R.id.buttonCadastro && contato != null){
+            cadastroContatosView.editouContatoPresenter();
+            return true;
+        }
+
+        else
+            return true;
+    }
 }

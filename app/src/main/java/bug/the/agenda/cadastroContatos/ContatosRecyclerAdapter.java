@@ -37,11 +37,14 @@ public class ContatosRecyclerAdapter extends RecyclerView.Adapter<ContatosRecycl
     Context context;
     ArrayList<Contato> contatos;
     public static final String CONTATO = "contato";
+    public static final String INDEX = "index";
+
 
     public ContatosRecyclerAdapter(Context context, ArrayList<Contato> contatos){
         this.context = context;
         this.contatos = contatos;
     }
+
 
     @Override
     public ContatosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -61,6 +64,7 @@ public class ContatosRecyclerAdapter extends RecyclerView.Adapter<ContatosRecycl
             public void onClick(View view) {
                 Intent intent = new Intent(context, CadastroContatosActivity.class);
                 intent.putExtra(CONTATO, contatos.get(holder.getAdapterPosition()));
+                intent.putExtra(INDEX, holder.getAdapterPosition());
                 context.startActivity(intent);
             }
         });

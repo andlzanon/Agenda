@@ -18,9 +18,6 @@
         </activity>
 
         <activity android:name=".cadastroContatos.ListaContatosActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="bug.the.agenda.main.MainActivity" />
         </activity>
 
         <activity android:name=".cadastroContatos.CadastroContatosActivity">

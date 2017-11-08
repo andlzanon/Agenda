@@ -35,8 +35,6 @@ public class ListaContatosActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle(R.string.lista_contatos);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mRecyclerView = (RecyclerView)findViewById(R.id.contatosRecyclerView);
         mLayoutManager = new LinearLayoutManager(this);

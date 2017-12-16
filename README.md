@@ -16,7 +16,7 @@ O App de agenda deve conter:
     * Botão na barra do aplicativo (Action Bar) para acessar a atividade de cadastro de contatos
     * Ao clicar neste botão deve ser aberta a tela de cadastro para inserir um novo contato
     
-*A atividade de cadastro de contatos deve conter os seguintes campos/funcionalidades:
+* A atividade de cadastro de contatos deve conter os seguintes campos/funcionalidades:
     * Campos para nome, endereço, telefone e e-mail
     * Botão para tirar foto do contato
     * Ao clicar neste botão o app deve capturar uma imagem que será salva para aquele contato

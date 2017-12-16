@@ -7,10 +7,8 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import bug.the.agenda.Entity.Contato;
 import bug.the.agenda.R;
-import bug.the.agenda.main.MainView;
-
-import static bug.the.agenda.R.string.endereco;
 
 /**
  * Created by Andre on 25/10/2017.

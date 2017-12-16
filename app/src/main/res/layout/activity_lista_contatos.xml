@@ -31,7 +31,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:scaleType="center"
-        android:onClick="criaContato"
         android:src="@drawable/ic_action_name"
         app:fabSize="normal"
         app:borderWidth="0dp" />

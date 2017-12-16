@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Agenda</string>
+    <string name="developer_name">THE BUG</string>
     <string name="username">Nome de usuário</string>
     <string name="password">Senha</string>
     <string name="sign_in">Entrar</string>
@@ -20,5 +21,6 @@
     <string name="novo_contato">Novo Contato</string>
     <string name="contato">Contato</string>
     <string name="lista_contatos">Lista de Contatos</string>
+    <string name="ir_maps">Ir para o endereço</string>
 
 </resources>

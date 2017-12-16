@@ -12,8 +12,8 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
+import bug.the.agenda.Entity.Contato;
 import bug.the.agenda.R;
 
 public class ListaContatosActivity extends AppCompatActivity {

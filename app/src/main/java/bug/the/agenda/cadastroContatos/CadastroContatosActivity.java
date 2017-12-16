@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import bug.the.agenda.Entity.Contato;
 import bug.the.agenda.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -110,7 +111,7 @@ public class CadastroContatosActivity extends AppCompatActivity implements Cadas
     }
 
     //inicia intent do mapa no Presenter
-    @OnClick(R.id.edit_text_endereco)
+    @OnClick(R.id.button_maps)
     public void abreMapa(){
         cadastroContatosPresenter.intentMapa(textoEndereco.getText().toString());
     }

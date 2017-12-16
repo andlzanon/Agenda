@@ -1,4 +1,4 @@
-package bug.the.agenda.main;
+package bug.the.agenda.login;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
@@ -13,22 +13,22 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 
-public class MainActivity extends AppCompatActivity implements MainView {
+public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @BindView (R.id.text_input_layout_username) TextInputLayout usernameTextInputLayout;
     @BindView (R.id.edit_text_username) TextInputEditText usernameEditText;
     @BindView (R.id.text_input_layout_password) TextInputLayout passwordTextInputLayout;
     @BindView (R.id.edit_text_password) TextInputEditText passwordEditText;
 
-    MainPresenter mainPresenter;
+    LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super .onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind( this );
 
-        mainPresenter = new MainPresenter(this);
+        loginPresenter = new LoginPresenter(this);
     }
 
     @OnTextChanged (R.id.edit_text_username)
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @OnClick (R.id.button_login)
     public void fazLogin (){
-        mainPresenter.login(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+        loginPresenter.login(usernameEditText.getText().toString(), passwordEditText.getText().toString());
     }
 
     public void erroUsuario(){
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     public void loginComSucesso(){
-        Intent abrirListaContatos = new Intent(MainActivity.this , ListaContatosActivity.class);
+        Intent abrirListaContatos = new Intent(LoginActivity.this , ListaContatosActivity.class);
         startActivity(abrirListaContatos);
     }
 }

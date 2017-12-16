@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import bug.the.agenda.Entity.Contato;
 import bug.the.agenda.R;
 
 /**
@@ -23,13 +23,13 @@ public class ContatosRecyclerAdapter extends RecyclerView.Adapter<ContatosRecycl
 
         public de.hdodenhof.circleimageview.CircleImageView imagemRecycler;
         public TextView nomeRecycler;
-        public TextView emailRecycler;
+        public TextView telefoneRecycler;
 
         public ContatosViewHolder(View itemView){
             super(itemView);
             imagemRecycler = (de.hdodenhof.circleimageview.CircleImageView)itemView.findViewById(R.id.imagemPerfilRecycler);
             nomeRecycler = (TextView)itemView.findViewById(R.id.nomeRecycler);
-            emailRecycler = (TextView) itemView.findViewById(R.id.emailRecycler);
+            telefoneRecycler = (TextView) itemView.findViewById(R.id.telefoneRecycler);
         }
     }
 
@@ -57,7 +57,7 @@ public class ContatosRecyclerAdapter extends RecyclerView.Adapter<ContatosRecycl
     public void onBindViewHolder(final ContatosViewHolder holder, int position) {
         holder.imagemRecycler.setImageBitmap(contatos.get(position).getFotoPerfil());
         holder.nomeRecycler.setText(contatos.get(position).getNome());
-        holder.emailRecycler.setText(contatos.get(position).getEmail());
+        holder.telefoneRecycler.setText(contatos.get(position).getTelefone());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

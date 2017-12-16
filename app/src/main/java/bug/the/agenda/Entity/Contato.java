@@ -1,4 +1,4 @@
-package bug.the.agenda.cadastroContatos;
+package bug.the.agenda.Entity;
 
 import android.graphics.Bitmap;
 import android.os.Parcel;
